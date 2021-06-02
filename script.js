@@ -20,6 +20,7 @@ function criarDiv() {
     }
 }
 
+/*
 //botão da cor 
 let botaoNaCor = document.getElementsByClassName('color');
 
@@ -35,3 +36,4 @@ function selecionaAClassNaCor(){
 }
 
 selecionaAClassNaCor();
+*/
