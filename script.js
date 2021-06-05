@@ -1,11 +1,6 @@
 criarDiv();
 
-let corPreto = document.querySelector('.preto');
-let corAzul = document.querySelector('.azul');
-let corVerde = document.querySelector('.verde');
-let corVermelho = document.querySelector('.vermelho')
-
-//criar div // turma do urução ajudou 
+//criar div para criar a tabela - Ajuda na turma 13 - tribo B 
 function criarDiv() {
     let numeroDeEspaços = 5;
     let elementoPai = document.getElementById('pixel-board');
@@ -20,20 +15,47 @@ function criarDiv() {
     }
 }
 
-/*
-//botão da cor 
-let botaoNaCor = document.getElementsByClassName('color');
+// Ajuda do Slack - André Moreno - turma 12
+let corPreto = document.querySelector('.preto');
+let corAzul = document.querySelector('.azul');
+let corVerde = document.querySelector('.verde');
+let corVermelho = document.querySelector('.vermelho');
+let elementoQuadro = document.querySelector('#pixel-board');
+selecionarCor();
+pintarCorDoQuadro();
 
-function selecionaAClassNaCor(){
-  for(let index = 0; index < botaoNaCor.length; index += 1){
-    botaoNaCor[index].addEventListener("click", function(){
-      botaoNaCor[index].classList.add('select');
-      if (document.getElementsByClassName('select') ===  ){
-       
-      }
-    });
-  }
+function selecionarCor() {
+  corPreto.addEventListener('click', inserirClassSelected);
+  corAzul.addEventListener('click', inserirClassSelected);
+  corVerde.addEventListener('click', inserirClassSelected);
+  corVermelho.addEventListener('click', inserirClassSelected);
 }
 
-selecionaAClassNaCor();
-*/
+function inserirClassSelected(event){
+  let elemento = document.querySelector('.selected');
+  elemento.classList.remove('selected');
+  event.target.classList.add('selected');
+ }
+
+function pintarCorDoQuadro(){
+  elementoQuadro.addEventListener('click', indentificarCor)
+}
+
+function indentificarCor(event){
+  event.target.classList.remove('vermelho');
+  event.target.classList.remove('preto');
+  event.target.classList.remove('azul');
+  event.target.classList.remove('verde');
+  if(event.target.classList.contains('pixel') === true){
+   if(corPreto.classList.contains('selected') === true){
+      event.target.classList.add('preto');
+    } else if(corVermelho.classList.contains('selected') === true){
+      event.target.classList.add('vermelho');
+    } else if(corAzul.classList.contains('selected') === true){
+      event.target.classList.add('azul');
+    } else if(corVerde.classList.contains('selected') === true){
+      event.target.classList.add('verde');
+    }
+  } 
+}
+

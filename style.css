@@ -5,24 +5,8 @@
     display: inline-block;  
 }
 
-.verde {
-    background-color: green;
-}
-
-.azul {
-    background-color: darkblue;
-}
-
 .selected {
     
-}
-
-.preto {
-  background-color: black;
-}
-
-.vermelho {
-    background-color: red;
 }
 
 .pixel {
@@ -31,4 +15,20 @@
     width: 40px;
     display: inline-block;    
     background-color: white;
+}
+
+.preto {
+    background-color: black;
+  }
+  
+  .vermelho {
+      background-color: red;
+  }
+
+  .verde {
+    background-color: palevioletred;
+}
+
+.azul {
+    background-color: darkblue;
 }
