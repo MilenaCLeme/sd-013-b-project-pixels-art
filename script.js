@@ -1,4 +1,14 @@
-criarDiv();
+let corPreto = document.querySelector('.preto');
+let corAzul = document.querySelector('.azul');
+let corVerde = document.querySelector('.verde');
+let corVermelho = document.querySelector('.vermelho');
+let elementoQuadro = document.querySelector('#pixel-board');
+let botao = document.getElementById('clear-board');
+let cadaQuadradoDoElementoQuadro = document.getElementsByClassName('pixel');
+criarDiv()
+selecionarCor();
+pintarCorDoQuadro();
+clicarDoBotao();
 
 //criar div para criar a tabela - Ajuda na turma 13 - tribo B 
 function criarDiv() {
@@ -16,14 +26,7 @@ function criarDiv() {
 }
 
 // Ajuda do Slack - André Moreno - turma 12
-let corPreto = document.querySelector('.preto');
-let corAzul = document.querySelector('.azul');
-let corVerde = document.querySelector('.verde');
-let corVermelho = document.querySelector('.vermelho');
-let elementoQuadro = document.querySelector('#pixel-board');
-selecionarCor();
-pintarCorDoQuadro();
-
+//seleciona a cor que está precisando pintar 
 function selecionarCor() {
   corPreto.addEventListener('click', inserirClassSelected);
   corAzul.addEventListener('click', inserirClassSelected);
@@ -37,6 +40,7 @@ function inserirClassSelected(event){
   event.target.classList.add('selected');
  }
 
+ //pinta a cor do quadro
 function pintarCorDoQuadro(){
   elementoQuadro.addEventListener('click', indentificarCor)
 }
@@ -57,5 +61,19 @@ function indentificarCor(event){
       event.target.classList.add('verde');
     }
   } 
+}
+
+//fazer o botão limpar a tabela 
+function clicarDoBotao(){
+  botao.addEventListener('click', limparElementoQuardro)
+}
+
+function limparElementoQuardro(){
+  for(let index = 0; index < cadaQuadradoDoElementoQuadro.length; index += 1){
+    cadaQuadradoDoElementoQuadro[index].classList.remove('preto');
+    cadaQuadradoDoElementoQuadro[index].classList.remove('vermelho');
+    cadaQuadradoDoElementoQuadro[index].classList.remove('verde');
+    cadaQuadradoDoElementoQuadro[index].classList.remove('azul')
+  }
 }
 
