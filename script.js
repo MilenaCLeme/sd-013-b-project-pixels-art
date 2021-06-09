@@ -1,51 +1,78 @@
-let corPreto = document.querySelector('.preto');
-let corAzul = document.querySelector('.azul');
-let corVerde = document.querySelector('.verde');
+let corPreto = document.querySelector('.preto')
+let corAzul = document.querySelector('.azul')
+let corVerde = document.querySelector('.verde')
 let corVermelho = document.querySelector('.vermelho');
 let elementoQuadro = document.querySelector('#pixel-board');
 let botao = document.getElementById('clear-board');
 let cadaQuadradoDoElementoQuadro = document.getElementsByClassName('pixel');
-criarDiv()
-selecionarCor();
+let botaoVQV = document.getElementById('generate-board');
+criarDiv(5)
+selecionarCor()
 pintarCorDoQuadro();
 clicarDoBotao();
 
+
+//criar alteração na div pelo numero de espaços atribuitos a ela; 
 //criar div para criar a tabela - Ajuda na turma 13 - tribo B 
-function criarDiv() {
-    let numeroDeEspaços = 5;
-    let elementoPai = document.getElementById('pixel-board');
-    for (let index = 0; index < numeroDeEspaços; index += 1) {
-        let elementoFilho = document.createElement('div');
-        elementoPai.appendChild(elementoFilho);
-        for (let indexFilho = 0; indexFilho < numeroDeEspaços; indexFilho += 1) {
-            let elementoFilhoDoFilho = document.createElement('div');
-            elementoFilhoDoFilho.className = "pixel";
-            elementoFilho.appendChild(elementoFilhoDoFilho);
-        }
+
+
+botaoVQV.addEventListener('click', function(){
+  document.getElementById('pixel-board').remove()
+  let elementoPaiPai = document.getElementById('pixel-paipai')
+  let elementoPai = document.createElement('div')
+  elementoPaiPai.appendChild(elementoPai);
+  elementoPai.id = 'pixel-board'
+  let numeroDeEspaco = 0;
+  numeroDeEspaco = document.getElementById('board-size').value
+  if(numeroDeEspaco <= 0){
+    alert('Board inválido!') 
+  } if (numeroDeEspaco > 50) {
+      criarDiv(50)
+  } else if (numeroDeEspaco < 5) {
+      criarDiv(5)
+  } else {
+    criarDiv(numeroDeEspaco)
+  }
+})
+
+
+function criarDiv(numeroDeEspaco) {
+  let elementoPai = document.getElementById('pixel-board');
+  for (let index = 0; index < numeroDeEspaco; index += 1) {
+    let elementoFilho = document.createElement('div');
+    elementoPai.appendChild(elementoFilho);
+    for (let indexFilho = 0; indexFilho < numeroDeEspaco; indexFilho += 1) {
+      let elementoFilhoDoFilho = document.createElement('div');
+      elementoFilhoDoFilho.className = "pixel";
+      elementoFilho.appendChild(elementoFilhoDoFilho);
     }
+  }
 }
+
 
 // Ajuda do Slack - André Moreno - turma 12
 //seleciona a cor que está precisando pintar 
-function selecionarCor() {
-  corPreto.addEventListener('click', inserirClassSelected);
-  corAzul.addEventListener('click', inserirClassSelected);
-  corVerde.addEventListener('click', inserirClassSelected);
-  corVermelho.addEventListener('click', inserirClassSelected);
+
+function selecionarCor() { 
+corPreto.addEventListener('click', inserirClassSelected);
+corAzul.addEventListener('click', inserirClassSelected);
+corVerde.addEventListener('click', inserirClassSelected);
+corVermelho.addEventListener('click', inserirClassSelected);
 }
 
 function inserirClassSelected(event){
   let elemento = document.querySelector('.selected');
   elemento.classList.remove('selected');
   event.target.classList.add('selected');
- }
-
- //pinta a cor do quadro
-function pintarCorDoQuadro(){
-  elementoQuadro.addEventListener('click', indentificarCor)
 }
 
-function indentificarCor(event){
+
+//pinta a cor do quadro
+function pintarCorDoQuadro() {
+elementoQuadro.addEventListener('click', indentificarCor)
+}
+
+function indentificarCor(event) {
   event.target.classList.remove('vermelho');
   event.target.classList.remove('preto');
   event.target.classList.remove('azul');
@@ -64,11 +91,11 @@ function indentificarCor(event){
 }
 
 //fazer o botão limpar a tabela 
-function clicarDoBotao(){
+function clicarDoBotao() {
   botao.addEventListener('click', limparElementoQuardro)
 }
 
-function limparElementoQuardro(){
+function limparElementoQuardro() {
   for(let index = 0; index < cadaQuadradoDoElementoQuadro.length; index += 1){
     cadaQuadradoDoElementoQuadro[index].classList.remove('preto');
     cadaQuadradoDoElementoQuadro[index].classList.remove('vermelho');
@@ -76,4 +103,3 @@ function limparElementoQuardro(){
     cadaQuadradoDoElementoQuadro[index].classList.remove('azul')
   }
 }
-
