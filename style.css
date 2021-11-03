@@ -2,11 +2,64 @@
     border: 1px solid black;
     height: 50px;
     width: 50px;
-    display: inline-block;  
+    display: inline-block;
+}
+
+#botao {
+    margin: 20px 0 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#botao button {
+    padding: 5px;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+#botao input {
+    margin-left: 10px;
+    padding: 5px;
+    border-radius: 5%;
+}
+
+header {
+    padding: 10px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#color-palette {
+    display: flex;
+    margin: 0 0 10px 30px;
+    align-items: center;
+    justify-content: center;
+}
+
+#pixel-board {
+    display: flex;
+    flex-direction: column;
+    margin: 20px 0 10px 30px;
+    align-items: center;
+}
+
+.color:hover {
+    cursor: pointer;
+}
+
+.juntar {
+    display: flex;
+}
+
+.juntar:hover {
+    cursor: pointer;
 }
 
 .selected {
-    
+    background-color: white;
 }
 
 .pixel {
@@ -15,6 +68,7 @@
     width: 40px;
     display: inline-block;    
     background-color: white;
+    padding: 0;
 }
 
 .preto {
@@ -31,4 +85,8 @@
 
 .azul {
     background-color: blue
+}
+
+a {
+    text-transform: none;
 }
